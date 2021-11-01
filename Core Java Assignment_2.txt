@@ -1,0 +1,255 @@
+Question 1:
+package Assignment_2;
+
+public class Student {
+	int stdId;
+	String stdName;
+	int stdClass;
+	 
+
+public void display() {
+	System.out.println(stdId);
+	System.out.println(stdName);
+	System.out.println(stdClass);
+	
+}
+public static void main(String args[]) {
+	Student s1 = new Student();
+	s1.stdId = 2;
+	s1.stdName="meghana";
+	s1.stdClass=4;
+	s1.display();
+	
+	Student s2 = new Student();
+	s2.stdId = 6;
+	s2.stdName="sumana";
+	s2.stdClass=6;
+	s2.display();
+}
+	
+}
+
+
+Question 2:
+package Assignment_2;
+
+public class Product {
+	int ProductId;
+	String ProductName;
+	double ProductPrice;
+	Product(int id, String name, double price){
+		 this.ProductId=id;
+		 this.ProductName=name;
+		 this.ProductPrice=price;
+	 }
+	public void display() {
+		System.out.println(ProductId);
+			System.out.println(ProductName);
+			System.out.println(ProductPrice);
+		}
+	public double totalprice(double gst) {
+		  return this.ProductPrice+gst;
+	  }
+	  public static void main(String args[]) {
+		  Product e1= new Product(5,"SAMSUNG",12000);
+		      e1.display();
+		 System.out.println(e1.totalprice(450)) ;   
+		     
+		 
+		
+	}
+}
+
+
+Question 3:
+
+package Assignment_2;
+
+public class T_Shirt {
+	String color;
+    String material;
+    String design;
+    
+    T_Shirt(){}  
+    
+    T_Shirt(String a, String b, String c){
+   	 this.color=a;
+        this.material=b;
+        this.design=c;
+    } 
+    public void display() {
+   	 System.out.println(color);
+   	 System.out.println(material);
+   	 System.out.println(design);   
+   	 }
+    
+    public String small(String d) {
+   	 return this.color+material+design;
+    }
+    public String large(String d) {
+   	 return this.color+material+design;
+    }
+    
+    public String xtralarge(String d) { 
+   	 return this.color+material+design;
+    }
+    public static void main (String []args) {
+   	 T_Shirt t1 =new T_Shirt("small:"+"blue","randon","polo");
+                t1.display();
+        T_Shirt t2 =new T_Shirt("large:"+"black","fiber","graphic");
+                t2.display();  
+        T_Shirt t3 =new T_Shirt("xtralarge:"+"white","polyester","raglan");
+                t3.display();        
+}
+}
+
+Inheritance Assignment:
+
+1.package Assignment_2;
+
+public class Car {
+	int speed;
+	double regularPrice;
+	String color;
+	Car(int speed,double regularPrice,String color){
+		this.speed=speed;
+		this.regularPrice=regularPrice;
+		this.color=color;
+	}
+	public double getSalePrice()
+	{
+		return regularPrice;
+	}
+	public static void main(String args[])
+	{
+		Car c=new Car(250,1500000,"white");
+	
+		System.out.println(c.getSalePrice());
+	}
+
+}
+
+
+Question 2:
+
+package Assignment_2;
+
+public class Truck extends Car {
+	int weight;
+	Truck(int speed,double regularPrice,String color,int weight)
+	{
+		super(speed,regularPrice,color);
+		this.weight=weight;
+	}
+	public double getSalePrice()
+	{
+		if(weight>2000)
+		{
+			return super.getSalePrice()-(0.1*super.getSalePrice());
+		}
+		else
+		{
+			return super.getSalePrice()-(0.2*super.getSalePrice());
+		}
+	}
+	public static void main(String args [])
+	{
+		Truck t1=new Truck(200,1500000,"black",2500);
+		
+		System.out.println(t1.getSalePrice());
+	}
+	
+	
+
+}
+
+Question 3:
+
+package Assignment_2;
+
+public class Ford extends Car{
+	int year;
+	int manufactureDiscount;
+	Ford(int speed,double regularPrice,String color,int year,int manufacturediscount)
+	{
+		super(speed,regularPrice,color);
+		this.year=year;
+		this.manufactureDiscount=manufacturediscount;
+	}
+		public double getSalePrice()
+		{
+			return super.getSalePrice()-manufactureDiscount;
+		}
+	public static void main(String args[])
+	{
+		Ford f=new Ford(250,1500000,"black",2019,5000);
+		System.out.println(f.getSalePrice());
+	}
+
+}
+
+Question 4:
+
+package Assignment_2;
+
+public class Sedan extends Car{
+	int length;
+	Sedan(int speed,double regularPrice,String color,int length)
+	{
+		super(speed,regularPrice,color);
+		this.length=length;
+	}
+	public double getSalePrice()
+	{
+		if(length>20)
+		{
+			return super.getSalePrice()-(0.05*super.getSalePrice());
+		}
+		else
+		{
+			return super.getSalePrice()-(0.1*super.getSalePrice());
+		}
+	}
+	public static void main(String args[])
+	{
+		Sedan s=new Sedan(260,1500000,"black",35);
+		System.out.println(s.getSalePrice());
+	}
+	
+
+}
+
+
+Question 5:
+
+package Assignment_2;
+
+public class MyOwnAutoShop {
+	MyOwnAutoShop(int speed,double regularPrice,String color,int length)
+	{
+		super(speed,regularPrice,color,length);
+	}
+	MyOwnAutoShop(int speed,double regularPrice,String color, int year, int manufacturediscount)
+	{
+		super(speed,regularPrice,color,year,manufacturediscount);
+	}
+	MyOwnAutoShop(int speed,double regularPrice,String color)
+	{
+		super(speed,regularPrice,color);
+	}
+	public static void main(String[] args) 
+	{
+		Car myCar = new Car (250,1500000,"white");
+	
+		Sedan mySedan = new Sedan(260,1500000,"black",35);
+		Ford myFord1 = new Ford (250,1500000,"black",2019,5000);
+		Ford myFord2 = new Ford (140,4000000,"Pink",2009, 1000);
+		System.out.println("MySedan Price"+ mySedan.getSalePrice()+"\n");
+		System.out.println("MyFord1 Price "+ myFord1.getSalePrice()+"\n");
+		System.out.println("MyFord2 Price"+ myFord2.getSalePrice()+"\n");
+		System.out.println("MyCar Price "+ myCar.getSalePrice()+"\n");
+	}
+
+}
+
+	
