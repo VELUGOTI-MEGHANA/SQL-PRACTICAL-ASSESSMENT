@@ -1,0 +1,51 @@
+MONGO DB DAY2 ASSISGNMENT
+
+
+1) db.test.find().pretty()
+2) db.test.find({},{restaurant_id:1,name:1, borough :1,cuisine:1})
+3)db.test.find({},{_id:0,restaurant_id:1,name:1, borough :1,cuisine:1})
+4)db.test.find({},{_id:0,restaurant_id:1,name:1, borough :1,"address.zipcode":1})
+5)db.test.find({"borough":"Bronx"}).pretty()
+6)db.test.find({"borough":"Bronx"}).skip(0).limit(5)
+7)db.test.find({"borough":"Bronx"}).skip(5).limit(5)
+8)db.test.find({"grades.score":{$gt:90}})
+9)db.test.find({"grades.score":{$gt:80, $lt:100}})
+10) db.restaurants.find({"address.coord" : {$lt : -95.754168}});
+11)db.test.find(
+ {$and:
+ [
+ {"cuisine" : {$ne :"American "}},
+ {"grades.score" : {$gt : 70}},
+ {"address.coord" : {$lt : -65.754168}}
+ ]
+ }
+ )
+12)db.test.find(
+
+[$query
+{"cuisine":{$ne:"American"}},
+{"grades.score" : {$gt : 70}},
+ {"address.coord" : {$lt : -65.754168}}
+ ]
+ }
+ )
+
+13)db.test.find(
+   {$and
+   [
+   {"cuisine":{$ne:"American"}},
+   {"grades.grade":"A"},
+   {borough:{$ne:"Brooklyn"}}
+   ]}
+    ).sort({"cuisine":-1})
+
+14).db.test.find(
+    {"name":{$regex:/^Wil/}},{restaurant_id:1, name:1, borough:1,  cuisine:1})
+
+15) db.test.find(
+    {"name":{$regex:/ces$/}},{restaurant_id:1, name:1, borough:1,  cuisine:1})
+
+
+
+
+
